@@ -15,14 +15,14 @@ permissions:
 
 jobs:
   setup:
-    runs-on: [default]
+    runs-on: ubuntu-latest
     steps:
       - name: Setup job
         run: echo "Setting up job environment"
 
   release:
     needs: setup
-    runs-on: [default]
+    runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
