@@ -6,6 +6,9 @@
     - "common/vars.yml"
     - "environments/{{ target_env }}/vars.yml"
 
+  collections:
+    - awx.awx
+
   pre_tasks:
     - name: Display target environment
       ansible.builtin.debug:
