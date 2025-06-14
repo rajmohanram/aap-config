@@ -1,0 +1,5 @@
+# Ansible variables
+# For tasks delegated to run from GHA runner
+ansible_connection: local
+ansible_become: false
+ansible_python_interpreter: auto_legacy_silent

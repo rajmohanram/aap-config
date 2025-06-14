@@ -1,0 +1,12 @@
+---
+# AAP Configuration Variables
+aap_hostname: "https://awx2.fastlane.ddnsgeek.com"
+aap_validate_certs: false
+# aap_username: "acoe_vhcs_aap_nonprod"
+# aap_password: "{{ lookup('env', 'AAP_PASSWORD') }}"
+controller_oauthtoken: "{{ lookup('env', 'AAP_TOKEN') }}"
+controller_dependency_check: true
+organization: "rlabs"
+# Inventories
+mgmt_inventory: "dev-mgmt"
+wkld_inventory: "dev-wkld"

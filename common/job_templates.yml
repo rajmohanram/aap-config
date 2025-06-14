@@ -1,0 +1,12 @@
+---
+controller_templates:
+  - name: "jt-demo"
+    description: "Demo Job Template"
+    job_type: "run"
+    project: "{{ project_name }}"
+    playbook: "playbooks/pb-demo.yml"
+    ask_scm_branch_on_launch: true
+    ask_inventory_on_launch: true
+    ask_variables_on_launch: true
+    allow_simultaneous: true
+    state: present

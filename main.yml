@@ -1,0 +1,68 @@
+---
+- name: Configure AAP resources
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - "common/vars.yml"
+    - "environments/{{ target_env }}/vars.yml"
+
+  pre_tasks:
+    - name: Display target environment
+      ansible.builtin.debug:
+        msg: "Running AAP configuration for environment: {{ target_env }}"
+
+    - name: Load projects
+      ansible.builtin.include_vars:
+        file: "common/projects.yml"
+        name: project_vars
+
+    - name: Load job templates
+      ansible.builtin.include_vars:
+        file: "common/job_templates.yml"
+        name: job_vars
+
+    - name: Load inventories
+      ansible.builtin.include_vars:
+        file: "environments/{{ target_env }}/inventory.yml"
+        name: inventory_vars
+
+    - name: Load hosts
+      ansible.builtin.include_vars:
+        file: "environments/{{ target_env }}/hosts.yml"
+        name: host_vars
+
+    # - name: Load workflow templates
+    #   ansible.builtin.include_vars:
+    #     file: "environments/{{ target_env }}/workflow_templates.yml"
+    #     name: workflow_vars
+
+  roles:
+    # Create projects
+    - role: infra.aap_configuration.controller_projects
+      when: project_vars.controller_projects is defined
+      vars:
+        controller_projects: "{{ project_vars.controller_projects }}"
+
+    # Create inventories
+    - role: infra.aap_configuration.controller_inventories
+      when: inventory_vars.controller_inventories is defined
+      vars:
+        controller_inventories: "{{ inventory_vars.controller_inventories }}"
+
+    # Create hosts
+    - role: infra.aap_configuration.controller_hosts
+      when: host_vars.controller_hosts is defined
+      vars:
+        controller_hosts: "{{ host_vars.controller_hosts }}"
+
+    # Create job templates
+    - role: infra.aap_configuration.controller_job_templates
+      when: job_vars.controller_templates is defined
+      vars:
+        controller_templates: "{{ job_vars.controller_templates }}"
+
+    # # Create workflow templates
+    # - role: infra.aap_configuration.workflow_template
+    #   when: workflow_vars.controller_workflows is defined
+    #   vars:
+    #     controller_workflows: "{{ workflow_vars.controller_workflows }}"

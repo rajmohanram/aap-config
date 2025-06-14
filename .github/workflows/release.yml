@@ -1,0 +1,64 @@
+---
+name: Release
+
+run-name: >
+  ${{ github.workflow }} - Event: ${{ github.event_name }}, branch: ${{ github.head_ref || github.ref_name }}
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    runs-on: [default]
+    steps:
+      - name: Setup job
+        run: echo "Setting up job environment"
+
+  release:
+    needs: setup
+    runs-on: [default]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        env: [lab, dev]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Ansible collections
+        run: |
+          ansible-galaxy collection install -r requirements.yml
+
+      - name: Set AAP_TOKEN for ${{ matrix.env }}
+        id: set_token
+        run: |
+          if [ "${{ matrix.env }}" = "lab" ]; then
+            echo "AAP_TOKEN=${{ secrets.AAP_TOKEN_LAB }}" >> $GITHUB_ENV
+          elif [ "${{ matrix.env }}" = "dev" ]; then
+            echo "AAP_TOKEN=${{ secrets.AAP_TOKEN_DEV }}" >> $GITHUB_ENV
+          fi
+
+      - name: Run AAP configuration playbook for ${{ matrix.env }}
+        env:
+          AAP_TOKEN: ${{ env.AAP_TOKEN }}
+        run: |
+          ansible-playbook main.yml -e "target_env=${{ matrix.env }}"
