@@ -4,3 +4,5 @@ collections:
     version: "3.3.0"
   - name: awx.awx
     version: "24.6.1"
+  - name: ./offline_collections/
+    type: dir
