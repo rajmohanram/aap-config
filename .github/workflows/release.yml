@@ -61,4 +61,5 @@ jobs:
         env:
           AAP_TOKEN: ${{ env.AAP_TOKEN }}
         run: |
+          ansible-playbook infra.aap_configuration.configure_aap.yml
           ansible-playbook main.yml -e "target_env=${{ matrix.env }}"
