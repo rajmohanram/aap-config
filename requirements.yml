@@ -4,5 +4,5 @@ collections:
     version: "3.3.0"
   - name: awx.awx
     version: "24.6.1"
-  - name: ./offline_collections/ansible-controller-4.6.14.tar.gz
+  - name: ./offline_collections/ansible-controller-4.4.0.tar.gz
     type: file
