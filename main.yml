@@ -37,6 +37,10 @@
     #     file: "environments/{{ target_env }}/workflow_templates.yml"
     #     name: workflow_vars
 
+    - name: Debug variables
+      ansible.builtin.debug:
+        var: vars
+
   roles:
     # Create projects
     - role: infra.aap_configuration.controller_projects

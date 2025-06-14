@@ -60,5 +60,6 @@ jobs:
       - name: Run AAP configuration playbook for ${{ matrix.env }}
         env:
           AAP_PASSWORD: ${{ env.AAP_PASSWORD }}
+          TARGET_ENV: ${{ matrix.env }}
         run: |
-          ansible-playbook main.yml -e "target_env=${{ matrix.env }}"
+          ansible-playbook main.yml
