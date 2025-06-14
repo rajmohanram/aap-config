@@ -52,13 +52,13 @@ jobs:
         id: set_token
         run: |
           if [ "${{ matrix.env }}" = "lab" ]; then
-            echo "AAP_TOKEN=${{ secrets.AAP_TOKEN_LAB }}" >> $GITHUB_ENV
+            echo "AAP_PASSWORD=${{ secrets.AAP_PASSWORD_LAB }}" >> $GITHUB_ENV
           elif [ "${{ matrix.env }}" = "dev" ]; then
-            echo "AAP_TOKEN=${{ secrets.AAP_TOKEN_DEV }}" >> $GITHUB_ENV
+            echo "AAP_PASSWORD=${{ secrets.AAP_PASSWORD_DEV }}" >> $GITHUB_ENV
           fi
 
       - name: Run AAP configuration playbook for ${{ matrix.env }}
         env:
-          AAP_TOKEN: ${{ env.AAP_TOKEN }}
+          AAP_PASSWORD: ${{ env.AAP_PASSWORD }}
         run: |
           ansible-playbook main.yml -e "target_env=${{ matrix.env }}"

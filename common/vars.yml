@@ -1,2 +1,3 @@
 ---
 # Common Variables
+# target_env: "{{ lookup('env', 'TARGET_ENV') | default('lab') }}"
