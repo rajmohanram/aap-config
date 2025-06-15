@@ -52,4 +52,6 @@ jobs:
         run: pip install requests pyyaml
 
       - name: Run CI checks
+        env:
+          AAP_TOKEN: ${{ secrets.AAP_TOKEN }}
         run: make ci-checks
