@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "controller_projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "organization": { "type": "string" },
+          "scm_type": { "type": "string" },
+          "scm_url": { "type": "string" },
+          "scm_branch": { "type": "string" },
+          "scm_update_on_launch": { "type": "boolean" },
+          "allow_override": { "type": "boolean" },
+          "wait": { "type": "boolean" },
+          "update_project": { "type": "boolean" },
+          "state": { "type": "string" }
+        },
+        "required": [
+          "name",
+          "description",
+          "organization",
+          "scm_type",
+          "scm_url",
+          "scm_branch",
+          "scm_update_on_launch",
+          "allow_override",
+          "wait",
+          "update_project",
+          "state"
+        ]
+      }
+    }
+  },
+  "required": ["controller_projects"]
+}

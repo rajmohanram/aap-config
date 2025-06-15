@@ -3,9 +3,9 @@ controller_templates:
   - name: "demo"
     description: "Demo Job Template"
     job_type: "run"
+    inventory: "{{ inventory_name }}"
     project: "{{ project_name }}"
     playbook: "playbooks/demo.yml"
-    ask_inventory_on_launch: true
     ask_variables_on_launch: true
     allow_simultaneous: true
     state: present

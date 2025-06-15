@@ -1,5 +1,0 @@
----
-# Inventories
-mgmt_inventory: "dev-mgmt"
-wkld_inventory: "dev-wkld"
-vcenter_username: "administrator@vsphere.local"
