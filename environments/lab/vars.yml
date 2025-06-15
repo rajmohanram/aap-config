@@ -1,11 +1,5 @@
 ---
-# AAP Configuration Variables
-aap_hostname: "https://awx1.fastlane.ddnsgeek.com"
-aap_validate_certs: false
-aap_username: "rlabs-admin"
-aap_password: "{{ lookup('env', 'AAP_PASSWORD') }}"
-controller_dependency_check: true
-organization: "rlabs"
 # Inventories
 mgmt_inventory: "lab-mgmt"
 wkld_inventory: "lab-wkld"
+vcenter_username: "administrator@vsphere.local"

@@ -24,11 +24,6 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        env: [lab, dev]
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -48,18 +43,8 @@ jobs:
         run: |
           ansible-galaxy collection install -r requirements.yml
 
-      - name: Set AAP_TOKEN for ${{ matrix.env }}
-        id: set_token
-        run: |
-          if [ "${{ matrix.env }}" = "lab" ]; then
-            echo "AAP_PASSWORD=${{ secrets.AAP_PASSWORD_LAB }}" >> $GITHUB_ENV
-          elif [ "${{ matrix.env }}" = "dev" ]; then
-            echo "AAP_PASSWORD=${{ secrets.AAP_PASSWORD_DEV }}" >> $GITHUB_ENV
-          fi
-
-      - name: Run AAP configuration playbook for ${{ matrix.env }}
+      - name: Run AAP configuration playbook
         env:
-          AAP_PASSWORD: ${{ env.AAP_PASSWORD }}
-          TARGET_ENV: ${{ matrix.env }}
+          AAP_TOKEN: ${{ env.AAP_TOKEN }}
         run: |
           ansible-playbook main.yml

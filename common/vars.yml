@@ -1,3 +1,12 @@
 ---
-# Common Variables
-target_env: "{{ lookup('env', 'TARGET_ENV') }}"
+# AAP Configuration Variables
+aap_hostname: "https://awx1.fastlane.ddnsgeek.com"
+aap_validate_certs: false
+# aap_username: "rlabs-admin"
+# aap_password: "{{ lookup('env', 'AAP_PASSWORD') }}"
+aap_token: "{{ lookup('env', 'AAP_TOKEN') }}"
+controller_dependency_check: false
+organization: "rlabs"
+
+# Projects
+project_name: "rlabs-project"

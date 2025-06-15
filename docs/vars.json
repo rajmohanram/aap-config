@@ -1,0 +1,346 @@
+{
+    "vars": {
+        "aap_configuration_async_dir": null,
+        "aap_hostname": "https://awx1.fastlane.ddnsgeek.com",
+        "aap_password": "{{ lookup('env', 'AAP_PASSWORD') }}",
+        "aap_username": "rlabs-admin",
+        "aap_validate_certs": false,
+        "ansible_become": false,
+        "ansible_check_mode": false,
+        "ansible_config_file": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config/ansible.cfg",
+        "ansible_connection": "local",
+        "ansible_dependent_role_names": [
+            "infra.aap_configuration.meta_dependency_check",
+            "infra.aap_configuration.global_vars"
+        ],
+        "ansible_diff_mode": false,
+        "ansible_facts": {},
+        "ansible_forks": 50,
+        "ansible_inventory_sources": [
+            "/Users/rajmohanr/Documents/github/rajmohanram/aap-config/hosts"
+        ],
+        "ansible_play_batch": [
+            "localhost"
+        ],
+        "ansible_play_hosts": [
+            "localhost"
+        ],
+        "ansible_play_hosts_all": [
+            "localhost"
+        ],
+        "ansible_play_name": "Configure AAP resources",
+        "ansible_play_role_names": [
+            "infra.aap_configuration.controller_projects",
+            "infra.aap_configuration.controller_inventories",
+            "infra.aap_configuration.controller_hosts",
+            "infra.aap_configuration.controller_job_templates"
+        ],
+        "ansible_playbook_python": "/opt/homebrew/Cellar/ansible/11.6.0/libexec/bin/python",
+        "ansible_python_interpreter": "auto_legacy_silent",
+        "ansible_role_names": [
+            "infra.aap_configuration.meta_dependency_check",
+            "infra.aap_configuration.controller_job_templates",
+            "infra.aap_configuration.global_vars",
+            "infra.aap_configuration.controller_inventories",
+            "infra.aap_configuration.controller_hosts",
+            "infra.aap_configuration.controller_projects"
+        ],
+        "ansible_run_tags": [
+            "all"
+        ],
+        "ansible_skip_tags": [],
+        "ansible_verbosity": 0,
+        "ansible_version": {
+            "full": "2.18.6",
+            "major": 2,
+            "minor": 18,
+            "revision": 6,
+            "string": "2.18.6"
+        },
+        "controller_configuration_host_enforce_defaults": "{{ aap_configuration_enforce_defaults | default(false) }}",
+        "controller_configuration_hosts_async_delay": "{{ aap_configuration_async_delay | default(1) }}",
+        "controller_configuration_hosts_async_retries": "{{ aap_configuration_async_retries | default(30) }}",
+        "controller_configuration_hosts_loop_delay": "{{ aap_configuration_loop_delay | default(0) }}",
+        "controller_configuration_hosts_secure_logging": "{{ aap_configuration_secure_logging | default('false') }}",
+        "controller_configuration_inventories_async_delay": "{{ aap_configuration_async_delay | default(1) }}",
+        "controller_configuration_inventories_async_retries": "{{ aap_configuration_async_retries | default(30) }}",
+        "controller_configuration_inventories_enforce_defaults": "{{ aap_configuration_enforce_defaults | default(false) }}",
+        "controller_configuration_inventories_loop_delay": "{{ aap_configuration_loop_delay | default(0) }}",
+        "controller_configuration_inventories_secure_logging": "{{ aap_configuration_secure_logging | default('false') }}",
+        "controller_configuration_job_templates_async_delay": "{{ aap_configuration_async_delay | default(1) }}",
+        "controller_configuration_job_templates_async_retries": "{{ aap_configuration_async_retries | default(30) }}",
+        "controller_configuration_job_templates_enforce_defaults": "{{ aap_configuration_enforce_defaults | default(false) }}",
+        "controller_configuration_job_templates_loop_delay": "{{ aap_configuration_loop_delay | default(0) }}",
+        "controller_configuration_job_templates_secure_logging": "{{ aap_configuration_secure_logging | default('false') }}",
+        "controller_configuration_projects_async_delay": "{{ aap_configuration_async_delay | default(1) }}",
+        "controller_configuration_projects_async_retries": "{{ aap_configuration_async_retries | default(30) }}",
+        "controller_configuration_projects_enforce_defaults": "{{ aap_configuration_enforce_defaults | default(false) }}",
+        "controller_configuration_projects_loop_delay": "{{ aap_configuration_loop_delay | default(0) }}",
+        "controller_configuration_projects_secure_logging": "{{ aap_configuration_secure_logging | default('false') }}",
+        "controller_dependency_check": true,
+        "controller_hosts": [],
+        "controller_inventories": [],
+        "controller_projects": [],
+        "controller_templates": [],
+        "environment": [],
+        "group_names": [
+            "ungrouped"
+        ],
+        "groups": {
+            "all": [
+                "localhost"
+            ],
+            "ungrouped": [
+                "localhost"
+            ]
+        },
+        "host_vars": {
+            "controller_hosts": [
+                {
+                    "description": "Management vCenter for Lab",
+                    "enabled": true,
+                    "inventory": "{{ mgmt_inventory }}",
+                    "name": "localhost",
+                    "state": "present",
+                    "variables": {
+                        "ansible_become": false,
+                        "ansible_connection": "local",
+                        "ansible_python_interpreter": "auto_silent",
+                        "vcenter_hostname": "mgmt-vcenter.lab.rlabs.com",
+                        "vcenter_username": "administrator@vsphere.local"
+                    }
+                },
+                {
+                    "description": "Workload vCenter for Lab",
+                    "enabled": true,
+                    "inventory": "{{ wkld_inventory }}",
+                    "name": "localhost",
+                    "state": "present",
+                    "variables": {
+                        "ansible_become": false,
+                        "ansible_connection": "local",
+                        "ansible_python_interpreter": "auto_silent",
+                        "vcenter_hostname": "wkld-vcenter.lab.rlabs.com",
+                        "vcenter_username": "administrator@vsphere.local"
+                    }
+                }
+            ]
+        },
+        "hostvars": {
+            "localhost": {
+                "ansible_become": false,
+                "ansible_check_mode": false,
+                "ansible_config_file": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config/ansible.cfg",
+                "ansible_connection": "local",
+                "ansible_diff_mode": false,
+                "ansible_facts": {},
+                "ansible_forks": 50,
+                "ansible_inventory_sources": [
+                    "/Users/rajmohanr/Documents/github/rajmohanram/aap-config/hosts"
+                ],
+                "ansible_playbook_python": "/opt/homebrew/Cellar/ansible/11.6.0/libexec/bin/python",
+                "ansible_python_interpreter": "auto_legacy_silent",
+                "ansible_run_tags": [
+                    "all"
+                ],
+                "ansible_skip_tags": [],
+                "ansible_verbosity": 0,
+                "ansible_version": {
+                    "full": "2.18.6",
+                    "major": 2,
+                    "minor": 18,
+                    "revision": 6,
+                    "string": "2.18.6"
+                },
+                "group_names": [
+                    "ungrouped"
+                ],
+                "groups": {
+                    "all": [
+                        "localhost"
+                    ],
+                    "ungrouped": [
+                        "localhost"
+                    ]
+                },
+                "host_vars": {
+                    "controller_hosts": [
+                        {
+                            "description": "Management vCenter for Lab",
+                            "enabled": true,
+                            "inventory": "{{ mgmt_inventory }}",
+                            "name": "localhost",
+                            "state": "present",
+                            "variables": {
+                                "ansible_become": false,
+                                "ansible_connection": "local",
+                                "ansible_python_interpreter": "auto_silent",
+                                "vcenter_hostname": "mgmt-vcenter.lab.rlabs.com",
+                                "vcenter_username": "administrator@vsphere.local"
+                            }
+                        },
+                        {
+                            "description": "Workload vCenter for Lab",
+                            "enabled": true,
+                            "inventory": "{{ wkld_inventory }}",
+                            "name": "localhost",
+                            "state": "present",
+                            "variables": {
+                                "ansible_become": false,
+                                "ansible_connection": "local",
+                                "ansible_python_interpreter": "auto_silent",
+                                "vcenter_hostname": "wkld-vcenter.lab.rlabs.com",
+                                "vcenter_username": "administrator@vsphere.local"
+                            }
+                        }
+                    ]
+                },
+                "inventory_dir": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config",
+                "inventory_file": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config/hosts",
+                "inventory_hostname": "localhost",
+                "inventory_hostname_short": "localhost",
+                "inventory_vars": {
+                    "controller_inventories": [
+                        {
+                            "description": "Mgmt Inventory",
+                            "name": "{{ mgmt_inventory }}",
+                            "organization": "{{ organization }}",
+                            "state": "present"
+                        },
+                        {
+                            "description": "Wkld Inventory",
+                            "name": "{{ wkld_inventory }}",
+                            "organization": "{{ organization }}",
+                            "state": "present"
+                        }
+                    ]
+                },
+                "job_vars": {
+                    "controller_templates": [
+                        {
+                            "allow_simultaneous": true,
+                            "ask_inventory_on_launch": true,
+                            "ask_scm_branch_on_launch": true,
+                            "ask_variables_on_launch": true,
+                            "description": "Demo Job Template",
+                            "job_type": "run",
+                            "name": "jt-demo",
+                            "playbook": "playbooks/pb-demo.yml",
+                            "project": "{{ project_name }}",
+                            "state": "present"
+                        }
+                    ]
+                },
+                "omit": "__omit_place_holder__bce3e5c18adb5e5e7c8bf648a73d8cf4951a5e52",
+                "playbook_dir": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config",
+                "project_vars": {
+                    "controller_projects": [
+                        {
+                            "allow_override": true,
+                            "description": "RLabs Project",
+                            "name": "rlabs-project",
+                            "organization": "{{ organization }}",
+                            "scm_branch": "main",
+                            "scm_type": "git",
+                            "scm_update_on_launch": true,
+                            "scm_url": "https://github.com/rajmohanram/aap-playbooks",
+                            "state": "present",
+                            "update_project": true,
+                            "wait": true
+                        }
+                    ]
+                }
+            }
+        },
+        "inventory_dir": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config",
+        "inventory_file": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config/hosts",
+        "inventory_hostname": "localhost",
+        "inventory_hostname_short": "localhost",
+        "inventory_vars": {
+            "controller_inventories": [
+                {
+                    "description": "Mgmt Inventory",
+                    "name": "{{ mgmt_inventory }}",
+                    "organization": "{{ organization }}",
+                    "state": "present"
+                },
+                {
+                    "description": "Wkld Inventory",
+                    "name": "{{ wkld_inventory }}",
+                    "organization": "{{ organization }}",
+                    "state": "present"
+                }
+            ]
+        },
+        "job_vars": {
+            "controller_templates": [
+                {
+                    "allow_simultaneous": true,
+                    "ask_inventory_on_launch": true,
+                    "ask_scm_branch_on_launch": true,
+                    "ask_variables_on_launch": true,
+                    "description": "Demo Job Template",
+                    "job_type": "run",
+                    "name": "jt-demo",
+                    "playbook": "playbooks/pb-demo.yml",
+                    "project": "{{ project_name }}",
+                    "state": "present"
+                }
+            ]
+        },
+        "mgmt_inventory": "lab-mgmt",
+        "omit": "__omit_place_holder__bce3e5c18adb5e5e7c8bf648a73d8cf4951a5e52",
+        "operation_translate": {
+            "absent": {
+                "action": "deletion",
+                "verb": "Remove"
+            },
+            "disabled": {
+                "action": "disabled",
+                "verb": "Disabled"
+            },
+            "enabled": {
+                "action": "enabled",
+                "verb": "Enabled"
+            },
+            "exists": {
+                "action": "exists",
+                "verb": "Already Exists"
+            },
+            "present": {
+                "action": "creation",
+                "verb": "Create/Update"
+            }
+        },
+        "organization": "rlabs",
+        "play_hosts": [
+            "localhost"
+        ],
+        "playbook_dir": "/Users/rajmohanr/Documents/github/rajmohanram/aap-config",
+        "project_vars": {
+            "controller_projects": [
+                {
+                    "allow_override": true,
+                    "description": "RLabs Project",
+                    "name": "rlabs-project",
+                    "organization": "{{ organization }}",
+                    "scm_branch": "main",
+                    "scm_type": "git",
+                    "scm_update_on_launch": true,
+                    "scm_url": "https://github.com/rajmohanram/aap-playbooks",
+                    "state": "present",
+                    "update_project": true,
+                    "wait": true
+                }
+            ]
+        },
+        "role_names": [
+            "infra.aap_configuration.controller_projects",
+            "infra.aap_configuration.controller_inventories",
+            "infra.aap_configuration.controller_hosts",
+            "infra.aap_configuration.controller_job_templates"
+        ],
+        "target_env": "{{ lookup('env', 'TARGET_ENV') }}",
+        "wkld_inventory": "lab-wkld"
+    }
+}

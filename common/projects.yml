@@ -1,6 +1,6 @@
 ---
 controller_projects:
-  - name: "rlabs-project"
+  - name: "{{ project_name}}"
     description: "RLabs Project"
     organization: "{{ organization }}"
     scm_type: git

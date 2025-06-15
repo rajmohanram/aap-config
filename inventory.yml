@@ -1,0 +1,36 @@
+---
+- name: Display target environment
+  ansible.builtin.debug:
+    msg: "Running playbook to manage AAP controller configuration for environment: {{ target_env }}"
+
+- name: Load common variables for environment {{ target_env }}
+  ansible.builtin.include_vars:
+    file: "environments/{{ target_env }}/vars.yml"
+
+- name: Manage inventories
+  block:
+    - name: Load inventory variables for environment {{ target_env }}
+      ansible.builtin.include_vars:
+        file: "environments/{{ target_env }}/inventory.yml"
+        name: inventory_vars
+
+    - name: Create inventories
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.controller_inventories
+      vars:
+        controller_inventories: "{{ inventory_vars.controller_inventories }}"
+
+- name: Manage hosts
+  block:
+    - name: Load host variables for environment {{ target_env }}
+      ansible.builtin.include_vars:
+        file: "environments/{{ target_env }}/hosts.yml"
+        name: host_vars
+
+    - name: Create hosts
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.controller_hosts
+      vars:
+        controller_hosts: "{{ host_vars.controller_hosts }}"
+
+
