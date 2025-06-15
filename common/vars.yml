@@ -10,3 +10,6 @@ organization: "rlabs"
 
 # Projects
 project_name: "rlabs-project"
+
+# Inventory
+inventory_name: "rlabs-inventory"

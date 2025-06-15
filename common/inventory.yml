@@ -1,0 +1,6 @@
+---
+controller_inventories:
+  - name: "{{ inventory_name }}"
+    description: "Inventory for {{ organization }}"
+    organization: "{{ organization }}"
+    state: present
