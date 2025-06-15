@@ -45,6 +45,6 @@ jobs:
 
       - name: Run AAP configuration playbook
         env:
-          AAP_TOKEN: ${{ env.AAP_TOKEN }}
+          AAP_TOKEN: ${{ secrets.AAP_TOKEN }}
         run: |
           ansible-playbook main.yml
