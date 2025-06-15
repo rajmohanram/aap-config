@@ -47,4 +47,9 @@ jobs:
         env:
           AAP_TOKEN: ${{ secrets.AAP_TOKEN }}
         run: |
-          ansible-playbook main.yml
+          ansible-playbook main.yml | tee ansible_playbook.log
+
+      - name: Add ansible-playbook output to summary
+        run: |
+          echo '### Ansible Playbook Output' >> $GITHUB_STEP_SUMMARY
+          cat ansible_playbook.log >> $GITHUB_STEP_SUMMARY
