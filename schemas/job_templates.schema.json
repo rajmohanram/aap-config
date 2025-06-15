@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "controller_templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "job_type": { "type": "string" },
+          "inventory": { "type": "string" },
+          "project": { "type": "string" },
+          "playbook": { "type": "string" },
+          "ask_variables_on_launch": { "type": "boolean" },
+          "allow_simultaneous": { "type": "boolean" },
+          "state": { "type": "string" }
+        },
+        "required": [
+          "name",
+          "description",
+          "job_type",
+          "inventory",
+          "project",
+          "playbook",
+          "ask_variables_on_launch",
+          "allow_simultaneous",
+          "state"
+        ]
+      }
+    }
+  },
+  "required": ["controller_templates"]
+}

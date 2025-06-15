@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "controller_hosts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "enabled": { "type": "boolean" },
+          "state": { "type": "string" },
+          "inventory": { "type": "string" },
+          "variables": {
+            "type": "object",
+            "properties": {
+              "ansible_connection": { "type": "string" },
+              "ansible_become": { "type": "boolean" },
+              "ansible_python_interpreter": { "type": "string" }
+            },
+            "required": [
+              "ansible_connection",
+              "ansible_become",
+              "ansible_python_interpreter"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "enabled",
+          "state",
+          "inventory",
+          "variables"
+        ]
+      }
+    }
+  },
+  "required": ["controller_hosts"]
+}

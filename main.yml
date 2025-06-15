@@ -5,27 +5,27 @@
   connection: local
   gather_facts: false
   vars_files:
-    - "common/vars.yml"
+    - "controller/vars.yml"
 
   pre_tasks:
     - name: Load inventories
       ansible.builtin.include_vars:
-        file: "common/inventory.yml"
+        file: "controller/inventory.yml"
         name: inventory_vars
 
     - name: Load hosts
       ansible.builtin.include_vars:
-        file: "common/hosts.yml"
+        file: "controller/hosts.yml"
         name: host_vars
 
     - name: Load projects
       ansible.builtin.include_vars:
-        file: "common/projects.yml"
+        file: "controller/projects.yml"
         name: project_vars
 
     - name: Load job templates
       ansible.builtin.include_vars:
-        file: "common/job_templates.yml"
+        file: "controller/job_templates.yml"
         name: job_template_vars
 
   roles:
